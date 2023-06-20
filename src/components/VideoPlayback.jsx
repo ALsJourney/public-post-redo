@@ -5,11 +5,12 @@ import { useBlog } from "src/context/Blog.jsx";
 import FirstDisplay from "src/components/FirstDisplay.jsx";
 import ConnectedDisplay from "src/components/ConnectedDisplay.jsx";
 import PostList from "src/components/PostList.jsx";
+import Footer from "./Footer";
 
 export default function VideoPlayback(props) {
   const [connecting, setConnecting] = useState(false);
   const { connected, select } = useWallet();
-  const { user } = useBlog();
+  const { user, initialized } = useBlog();
 
   const onConnect = () => {
     setConnecting(true);
@@ -31,10 +32,14 @@ export default function VideoPlayback(props) {
       {connected ? (
         <div className={"content mt-8"}>
           <ConnectedDisplay />
-          <PostList />
+          {initialized ? <PostList /> : ""}
+          <Footer />
         </div>
       ) : (
-        <FirstDisplay />
+        <div>
+          <FirstDisplay />
+          <Footer />
+        </div>
       )}
     </main>
   );

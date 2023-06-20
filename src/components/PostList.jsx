@@ -23,7 +23,11 @@ function PostList(props) {
   }, [user]);
 
   return (
-    <main className={"pb-4 container flex relative max-h-fit rounded-xl top-2"}>
+    <main
+      className={
+        "pb-4 container flex relative max-h-fit rounded-xl top-2 overflow-auto"
+      }
+    >
       <div className="row">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {posts.map((item) => {

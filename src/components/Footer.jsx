@@ -1,14 +1,17 @@
 import React from "react";
 
+function getCurrentYear() {
+  return new Date().getFullYear();
+}
 function Footer() {
   return (
     <footer
       className={
-        "p-4  shadow md:flex md:items-center md:justify-center md:p-6 dark:bg-gray-800 fixed bottom-0"
+        "p-4  shadow  md:p-6 dark:bg-gray-800 fixed bottom-0 w-full flex justify-center items-center"
       }
     >
       <span className="text-sm text-white sm:text-center dark:text-white">
-        © 2022{" "}
+        © {getCurrentYear()}{" "}
         <a
           href="https://github.com/ALsJourney"
           target={"_blank"}

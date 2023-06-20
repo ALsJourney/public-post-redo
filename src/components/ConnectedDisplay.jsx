@@ -29,7 +29,7 @@ function ConnectedDisplay(props) {
           <h1 className={"text-2xl md:text-4xl font-bold"}>
             Successfully initialized ✅
           </h1>
-          <p className=" font-bold text-sm ml-2 capitalize md:text-2xl m-2">
+          <p className=" font-bold text-sm capitalize md:text-2xl text-xl">
             {user?.name}
           </p>
 
@@ -51,7 +51,11 @@ function ConnectedDisplay(props) {
         </>
       ) : (
         <>
-          <h1 className={"text-2xl md:text-4xl font-bold"}>
+          <h1
+            className={
+              "text-2xl md:text-4xl font-bold flex items-center justify-center text-center mb-4"
+            }
+          >
             We need to create a new user account first.
           </h1>
 
