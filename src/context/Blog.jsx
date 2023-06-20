@@ -111,6 +111,7 @@ export const BlogProvider = ({ children }) => {
 
   const fetchPosts = async () => {
     try {
+      setPosts([]);
       const [userPda] = findProgramAddressSync(
         [utf8.encode("user"), publicKey.toBuffer()],
         program.programId
@@ -147,7 +148,7 @@ export const BlogProvider = ({ children }) => {
           program.programId
         );
 
-        await program.methods
+        const tx = await program.methods
           .createPost(title, content)
           .accounts({
             userAccount: userPda,
@@ -158,6 +159,10 @@ export const BlogProvider = ({ children }) => {
           .rpc();
 
         setShowModal(false);
+
+        // Wait for the transaction to be confirmed
+        await connection.confirmTransaction(tx);
+
         fetchPosts(); // fetch posts after creating a new one
       } catch (error) {
         console.error(error);
